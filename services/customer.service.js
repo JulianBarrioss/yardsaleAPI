@@ -12,15 +12,16 @@ class CustomerService {
   }
 
   async finOne(id) {
-    const user = await models.Customer.findByPk(id);
-    if(!user) {
+    const customer = await models.Customer.findByPk(id);
+    if(!customer) {
       throw boom.notFound('customer not found');
     }
-    return user
+    return customer
   }
 
   async create(data) {
-    return data;
+    const newCustomer = await models.Customer.create(data);
+    return newCustomer;
   }
 
   async update(id, changes) {
